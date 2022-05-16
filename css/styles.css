@@ -1,0 +1,123 @@
+/* GENERALES */
+* {
+    box-sizing: border-box;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* REGLAS BODY */
+
+body {
+    background-image: url(../img/imagenFondo.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 90vh;
+}
+
+/* CONTENEDOR */
+.contenedor {
+    padding-top: 35%;
+}
+
+#contContTitulo {
+    padding-top: 5%;
+}
+
+/* REGLAS TITULO */
+#contTitulo {
+    background-color: lightgray;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+#titulo {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 3vw;
+}
+
+/* REGLAS INFORMACION */
+#contInformacion {
+    background-color: lightgray;
+    width: 50%;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+#informacion {
+    font-family: 'Radio Canada', sans-serif;
+    font-size: 1.75vw;
+    height: 50vh;
+    padding-top: 5%;
+}
+
+#contenedorImagen {
+    padding-top: 5%;
+}
+
+#imagen {
+    display:block;
+    margin:auto;
+    width: 150px;
+    height: 150px;
+}
+
+/* REGLAS FORMULARIO */
+.form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.input {
+    width: 90%;
+    height: 30px;
+    margin: 0.5rem;
+}
+
+#boton {
+    display: flex;
+    justify-content: center;
+}
+
+.boton {
+    width: 50%;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border: none;
+    background-color: grey;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        height: 100vh;
+    }
+
+    #titulo {
+        font-size: 0.75vw;
+    }
+
+    #imagen {
+        width: 75px;
+        height: 75px;
+    }
+
+    
+}
+ 
