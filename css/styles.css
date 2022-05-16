@@ -31,7 +31,7 @@ body {
 /* REGLAS TITULO */
 #contTitulo {
     background-color: lightgray;
-    width: 50%;
+    width: 55%;
     margin-left: auto;
     margin-right: auto;
     border-radius: 10px;
@@ -47,7 +47,7 @@ body {
 /* REGLAS INFORMACION */
 #contInformacion {
     background-color: lightgray;
-    width: 50%;
+    width: 55%;
     margin-top: auto;
     margin-bottom: auto;
     margin-left: auto;
@@ -110,7 +110,7 @@ body {
     }
 
     #titulo {
-        font-size: 0.75vw;
+        font-size: 7vw;
     }
 
     #imagen {
@@ -118,6 +118,26 @@ body {
         height: 75px;
     }
 
-    
+   #paginaPresentacion {
+       padding-top: 40%;
+       width: 100%;
+   }
+   
+   a {
+       font-size: 4vw;
+   }
+
+   .form  {
+        font-size: 5vw;
+   }
+
+   #contTitulo {
+        width: 70%;
+    }
+
+    #contInformacion {
+        width: 70%;
+        height: 50vh;
+    }
 }
  
