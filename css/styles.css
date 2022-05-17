@@ -88,6 +88,7 @@ body {
     width: 90%;
     height: 30px;
     margin: 0.5rem;
+    border-radius: 5px;
 }
 
 #boton {
@@ -119,12 +120,12 @@ body {
     }
 
    #paginaPresentacion {
-       padding-top: 40%;
+       padding-top: 30%;
        width: 100%;
    }
    
    #menuNavegacion a {
-       font-size: 6vw;
+       font-size: 5vw;
    }
 
    .form  {
@@ -132,11 +133,11 @@ body {
    }
 
    #contTitulo {
-        width: 70%;
+        width: 85%;
     }
 
     #contInformacion {
-        width: 70%;
+        width: 85%;
         height: 50vh;
     }
 }
