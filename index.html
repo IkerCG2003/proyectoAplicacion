@@ -12,6 +12,8 @@
         <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="./css/styles.css">
+        <!-- SCRIPTS -->
+        <script type="text/javascript" src="./js/scripts.js"></script>
         <title>Presentación</title>
     </head>
 
@@ -19,38 +21,108 @@
         <!-- MENÚ DE NAVEGACIÓN -->
         <section id="menuNavegacion">
             <nav class="navbar fixed-top  navbar-dark bg-dark">
-                <div class="container-fluid">
-                    <a class="navbar-brand">Página Web Aplicación</a>
+                <div class="container-fluid row">
+                    <a class="navbar-brand column-4" id="tituloMenu">Aplicación</a>
+                    <a href="#" class="column-4" id="user_1">Alumno</a>
+                    <a href="#" class="column-4" id="user_2">Profesor</a>
+                    <a href="#" class="column-4" id="user_3">Administrador</a>
                 </div>
             </nav>
         </section>
 
         <!-- PAGINA LOG IN -->
         <section id="paginaPresentacion">
-            <div id="contContTitulo">
-                <div id="contTitulo">
-                    <h1 id="titulo" class="flex">Bienvenid@s a nuestra página web</h1>
-                </div>
-            </div>        
-            
-            <div id="contenedor">
-                <div id="contInformacion">
-                    <div id="contenedorImagen">
-                            <img src="./img/perfil.png" id="imagen">
+            <!-- PESTAÑA DE ALUMNO -->
+            <div id="cont_1">
+                <div id="contContTitulo">
+                    <div id="contTitulo">
+                        <h1 id="titulo" class="flex">Inicia sesión como alumno</h1>
                     </div>
+                </div>        
+                
+                <div id="contenedor">
+                    <div id="contInformacion">
+                        <div id="contenedorImagen">
+                                <img src="./img/perfil.png" id="imagen">
+                        </div>
+    
+                        <div id="informacion">
+                            <div class="form">
+                                <form action="./proc/proc.inicioAlumno.php" method="post">
+                                    <input type="text" placeholder="nombre" name="nombre" class="input">
+                                    <input type="text" placeholder="correo" name="correo" class="input">
+                                    <input type="password" placeholder="contraseña" name="contra" class="input">
+                                    <br>
+                                    <br>
+                                    <div id="boton">
+                                        <input type="submit" value="Enviar" name="enviar" class="boton">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    <div id="informacion">
-                        <div class="form">
-                            <form action="./proc/proc.inicio.php" method="post">
-                                <input type="text" placeholder="nombre" name="nombre" class="input">
-                                <input type="text" placeholder="correo" name="correo" class="input">
-                                <input type="password" placeholder="contraseña" name="contra" class="input">
-                                <br>
-                                <br>
-                                <div id="boton">
-                                    <input type="submit" value="Enviar" name="enviar" class="boton">
-                                </div>
-                            </form>
+            <!-- PESTAÑA DE PROFESOR -->
+            <div id="cont_2" style="display: none;">
+                <div id="contContTitulo">
+                    <div id="contTitulo">
+                        <h1 id="titulo" class="flex">Inicia sesión como profesor</h1>
+                    </div>
+                </div>        
+                
+                <div id="contenedor">
+                    <div id="contInformacion">
+                        <div id="contenedorImagen">
+                                <img src="./img/perfil.png" id="imagen">
+                        </div>
+    
+                        <div id="informacion">
+                            <div class="form">
+                                <form action="./proc/proc.inicioProfe.php" method="post">
+                                    <input type="text" placeholder="nombre" name="nombre" class="input">
+                                    <input type="text" placeholder="correo" name="correo" class="input">
+                                    <input type="password" placeholder="contraseña" name="contra" class="input">
+                                    <br>
+                                    <br>
+                                    <div id="boton">
+                                        <input type="submit" value="Enviar" name="enviar" class="boton">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PESTAÑA DE ADMINISTRADOR -->
+            <div id="cont_3" style="display: none;">
+                <div id="contContTitulo">
+                    <div id="contTitulo">
+                        <h1 id="titulo" class="flex">Inicia sesión como administrador</h1>
+                    </div>
+                </div>        
+                
+                <div id="contenedor">
+                    <div id="contInformacion">
+                        <div id="contenedorImagen">
+                                <img src="./img/perfil.png" id="imagen">
+                        </div>
+    
+                        <div id="informacion">
+                            <div class="form">
+                                <form action="./proc/proc.inicioAdmin.php" method="post">
+                                    <input type="text" placeholder="nombre" name="nombre" class="input">
+                                    <input type="text" placeholder="correo" name="correo" class="input">
+                                    <input type="password" placeholder="contraseña" name="contra" class="input">
+                                    <br>
+                                    <br>
+                                    <div id="boton">
+                                        <input type="submit" value="Enviar" name="enviar" class="boton">
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

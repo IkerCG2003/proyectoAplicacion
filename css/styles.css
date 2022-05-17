@@ -9,6 +9,27 @@
     display: table;
 }
 
+/* REGLAS ENLACES */
+
+a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+}
+
+/* REGLAS COLUMNAS */
+.column-4 {
+    width: 24.5%;
+    font-size: 1.25vw;
+    padding-left: 4%;
+}
+
+/* REGLAS MENU */
+#contMenu {
+    color: white;
+    background-color: darkslategrey;
+}
+
 /* REGLAS BODY */
 
 body {
@@ -139,6 +160,12 @@ body {
     #contInformacion {
         width: 85%;
         height: 50vh;
+    }
+
+    .column-4 {
+        width: 10%;
+        font-size: 1vw;
+        padding-left: 4%;
     }
 }
  
