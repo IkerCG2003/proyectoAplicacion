@@ -15,12 +15,12 @@ a {
     text-decoration: none;
     color: white;
     text-align: center;
+    font-size: 1.25vw;
 }
 
 /* REGLAS COLUMNAS */
 .column-4 {
     width: 24.5%;
-    font-size: 1.25vw;
     padding-left: 4%;
 }
 
@@ -32,7 +32,7 @@ a {
 
 /* REGLAS BODY */
 
-body {
+#cuerpoInicio {
     background-image: url(../img/imagenFondo.jpg);
     background-size: cover;
     background-position: center;
@@ -125,6 +125,9 @@ body {
     border: none;
     background-color: grey;
 }
+
+/* REGLAS TABLA */
+
 
 @media only screen and (max-width: 600px) {
     body {
