@@ -9,6 +9,10 @@
     display: table;
 }
 
+p {
+    border-radius: 5px;
+}
+
 /* REGLAS ENLACES */
 
 a {

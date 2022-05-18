@@ -22,9 +22,10 @@
             $classe = $_POST['clase'];
 
             /* conexion a la base de datos */
-            require '../conexion.php';
+            include '../conexion.php';
             /* sentencia sql para insertar los usuarios */
-            $sql = "INSERT INTO `tbl_alumne` (`dni_alumne`,`nom_alu`,`cognom1_alu`,`cognom2_alu`,`telf_alu`,`email_alu`,`classe`) VALUES ('$dni','$name','$apell1','$apell2','$tele','$email',(SELECT `id_classe` FROM `tbl_classe` WHERE `codi_classe` = '$classe'))";
+            $sql = "INSERT INTO `tbl_alumne` (`dni_alu`,`nom_alu`,`cognom1_alu`,`cognom2_alu`,`telf_alu`,`email_alu`,`classe`) VALUES ('$dni','$name','$apell1','$apell2','$tele','$email',(SELECT `id_classe` FROM `tbl_classe` WHERE `codi_classe` = '$classe');)";
+            echo $sql;
             $insert = mysqli_query($con,$sql);
             ?>
 
