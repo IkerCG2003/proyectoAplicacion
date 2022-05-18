@@ -20,8 +20,18 @@
 
     <body>
         <section id="formularioUsuarios">
-            <form action="../proc/proc.crearUsuario.php">
+            <form action="../proc/proc.crearUsuario.php" method="post">
+                <p><input type="text" placeholder="DNI" name="dni"></p>
+                <p><input type="text" placeholder="Nombre" name="nombre"></p>
+                <p><input type="text" placeholder="1r Apellido" name="apellido1"></p>
+                <p><input type="text" placeholder="2o Apellido" name="apellido2"></p>
+                <p><input type="text" placeholder="Telefono" name="telf"></p>
+                <p><input type="text" placeholder="Email" name="email"></p>           
+                <p><input type="text" placeholder="Clase" name="clase" value="00"></p>
                 
+                <div id="boton">
+                    <input type="submit" value="Enviar" name="enviar" class="boton">
+                </div>
             </form>
         </section>    
     </body>

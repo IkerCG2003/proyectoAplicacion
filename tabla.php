@@ -26,6 +26,7 @@
         <section id="menuNavegacion">
             <nav class="navbar fixed-top  navbar-dark bg-dark">
                 <div class="container-fluid">
+                    <!-- hacemos un fitro utilizando un formulario -->
                     <div class="dropdown">
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                             Filtros
@@ -39,9 +40,12 @@
                         </ul>
                     </div>
                     <a class="navbar-brand" id="tituloMenu">#AppJIYI</a>
+                    <!-- puedes elegir que base de datos mostrar clicando en el nombre -->
                     <a href="#" id="user_1">Alumno</a>
                     <a href="#" id="user_2">Profesor</a>
+                    <!-- crear usario al clica en el botón -->
                     <a href="./modificaciones/crearUsuario.html" class="btn btn-primary" role="button" aira-disabled="true">Crear</a>
+                    <!-- descargar fichero csv con el contenido de la base de datos -->
                     <a href="./exportarCSV.php"  class="btn btn-secondary" role="button" aria-disabled="true">Exportar CSV</a>
                 </div>
             </nav>
