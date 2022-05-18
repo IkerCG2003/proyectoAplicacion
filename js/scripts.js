@@ -1,3 +1,4 @@
+/* SELECCION ALUMNO - PROFESOR - ADMINISTRADOR */
 function muestraOculta(e) {
     var origen = e.target.id;
     origen = origen.split("_");
@@ -17,3 +18,6 @@ window.onload = function() {
     document.getElementById("user_2").onclick = muestraOculta;
     document.getElementById("user_3").onclick = muestraOculta;
 }
+
+/* VALIDACIÓN FORMULARIO */
+

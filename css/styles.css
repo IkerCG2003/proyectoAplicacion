@@ -19,6 +19,8 @@ a {
 }
 
 /* REGLAS COLUMNAS */
+ 
+
 .column-4 {
     width: 24.5%;
     padding-left: 4%;
@@ -63,6 +65,10 @@ a {
     font-family: 'Ubuntu Condensed', sans-serif;
     font-weight: bold;
     font-size: 3vw;
+}
+
+#tituloMenu {
+    color: white;
 }
 
 /* REGLAS INFORMACION */
@@ -127,11 +133,13 @@ a {
 }
 
 /* REGLAS TABLA */
-
+#tabla {
+    padding-top: 4%;
+}
 
 @media only screen and (max-width: 600px) {
     body {
-        height: 100vh;
+        height: 110vh;
     }
 
     #titulo {
