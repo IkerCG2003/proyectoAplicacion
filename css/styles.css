@@ -24,7 +24,6 @@ a {
 
 /* REGLAS COLUMNAS */
  
-
 .column-4 {
     width: 24.5%;
     padding-left: 4%;
@@ -38,7 +37,7 @@ a {
 
 /* REGLAS BODY */
 
-#cuerpoInicio {
+.cuerpoInicio {
     background-image: url(../img/imagenFondo.jpg);
     background-size: cover;
     background-position: center;
@@ -116,7 +115,7 @@ a {
 }
 
 .input {
-    width: 90%;
+    width: 95%;
     height: 30px;
     margin: 0.5rem;
     border-radius: 5px;
@@ -128,7 +127,7 @@ a {
 }
 
 .boton {
-    width: 50%;
+    width: 75%;
     border-radius: 10px;
     margin-left: auto;
     margin-right: auto;
@@ -138,6 +137,29 @@ a {
 
 /* REGLAS TABLA */
 #tabla {
+    padding-top: 4%;
+}
+
+/* REGLAS FORMULARIO CREACIÓN USUARIO */
+#contenedorCrearUsuarios {
+    height: 65vh;
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+
+#formularioUsuarios {
+    background-color: lightgray;
+    width: 55%;
+    border-radius: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ESTILOS BBDD */
+.base {
     padding-top: 4%;
 }
 

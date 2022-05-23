@@ -1,5 +1,5 @@
 <?php
-require_once 'conexion.php'; 
+require_once '../conexion.php'; 
 $sql = "SELECT * FROM tbl_alumne";
 $lista = mysqli_query($con,$sql);
 

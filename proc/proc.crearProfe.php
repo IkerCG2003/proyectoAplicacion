@@ -13,21 +13,20 @@
             // con esta página vamos a insertar los datos en la base de datos
 
             // recuperar valores del formulario
-            $dni = $_POST['dni'];
             $name = $_POST['nombre'];
             $apell1 = $_POST['apellido1'];
             $apell2 = $_POST['apellido2'];
             $tele= $_POST['telf'];
             $email = $_POST['email'];
-            $classe = $_POST['clase'];
+            $dept = $_POST['dept'];
 
             /* conexion a la base de datos */
             include '../conexion.php';
             /* sentencia sql para insertar los usuarios */
-            $sql = "INSERT INTO `tbl_alumne` (`dni_alu`,`nom_alu`,`cognom1_alu`,`cognom2_alu`,`telf_alu`,`email_alu`,`classe`) VALUES ('$dni','$name','$apell1','$apell2','$tele','$email',(SELECT `id_classe` FROM `tbl_classe` WHERE `codi_classe` = '$classe');)";
+            $sql = "INSERT INTO `tbl_professor` (`nom_prof`,`cognom1_prof`,`cognom2_prof`,`email_prof`,`telf`,`dept`) VALUES ('$name','$apell1','$apell2','$email','$tele',$dept);";
             echo $sql;
             $insert = mysqli_query($con,$sql);
-            ?>
+        ?>
 
             <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script>

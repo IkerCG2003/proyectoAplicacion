@@ -7,7 +7,7 @@ $pass = $_POST['contra'];
 // establecemos la conexion a la base de datos
 
 include_once 'conexion.php' // incluimos el fichero que contiene la conexion
-$sql = "SELECT * FROM tbl_alumne WHERE email_alu = $mail";
+$sql = "SELECT * FROM tbl_profe WHERE email_alu = $mail";
 $lista = mysqli_query($conexion,$sql);
 
 
