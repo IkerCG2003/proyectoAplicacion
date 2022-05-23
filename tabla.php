@@ -16,165 +16,145 @@
         <!-- ESTILOS CSS -->
         <link rel="stylesheet" href="./css/styles.css">
         <!-- SCRIPTS -->
-        <script type="text/javascript" src="./js/scripts.js"></script>
+        <script type="text/javascript" src="./js/bbdd.js"></script>
         <!-- TITULO -->
         <title>Contenido de la Base de Datos</title>
     </head>
 
     <body>
-        <!-- MENU DE LA TABLA -->
-        <div id="base_1" class="base">
-            <section id="menuNavegacion">
-                <nav class="navbar fixed-top  navbar-dark bg-dark">
-                    <div class="container-fluid">
-                        <!-- hacemos un fitro utilizando un formulario -->
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Filtros
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <p><input type="text" Placeholder="DNI" name="dni"></p>
-                                <p><input type="nombre" placeholder="Nombre" name="name"></p>
-                                <p><input type="nombre" placeholder="1r Apellido" name="apellido1"></p>
-                                <p><input type="nombre" placeholder="2o Apellido" name="apellido2"></p>
-                                <p><input type="nombre" placeholder="Clase" name="clase"></p>
-                            </ul>
+        <!-- MENU DE LA TABLA -->   
+                <section id="menuNavegacion">
+                    <nav class="navbar fixed-top  navbar-dark bg-dark">
+                        <div class="container-fluid">
+                            <!-- hacemos un fitro utilizando un formulario -->
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Filtros
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                    <p><input type="text" Placeholder="DNI" name="dni"></p>
+                                    <p><input type="nombre" placeholder="Nombre" name="name"></p>
+                                    <p><input type="nombre" placeholder="1r Apellido" name="apellido1"></p>
+                                    <p><input type="nombre" placeholder="2o Apellido" name="apellido2"></p>
+                                    <p><input type="nombre" placeholder="Clase" name="clase"></p>
+                                </ul>
+                            </div>
+                            <a class="navbar-brand" id="tituloMenu">#AppJIYI</a>
+                            <!-- puedes elegir que base de datos mostrar clicando en el nombre -->
+                            <a href="#" id="tabla_1">Alumno</a>
+                            <a href="#" id="tabla_2">Profesor</a>
+                            <!-- crear usario al clica en el botón -->
+                            <a href="./cambios/crearUsuario.html" class="btn btn-primary" role="button" aira-disabled="true">Crear</a>
+                            <!-- descargar fichero csv con el contenido de la base de datos -->
+                            <a href="./CSV/exportarAlumnoCSV.php"  class="btn btn-secondary" role="button" aria-disabled="true">Exportar CSV</a>
                         </div>
-                        <a class="navbar-brand" id="tituloMenu">#AppJIYI</a>
-                        <!-- puedes elegir que base de datos mostrar clicando en el nombre -->
-                        <a href="#" id="tabla_1">Alumno</a>
-                        <a href="#" id="tabla_2">Profesor</a>
-                        <!-- crear usario al clica en el botón -->
-                        <a href="./cambios/crearUsuario.html" class="btn btn-primary" role="button" aira-disabled="true">Crear</a>
-                        <!-- descargar fichero csv con el contenido de la base de datos -->
-                        <a href="./CSV/exportarAlumnoCSV.php"  class="btn btn-secondary" role="button" aria-disabled="true">Exportar CSV</a>
-                    </div>
-                </nav>
-            </section>
+                    </nav>
+                </section>
 
-            <section id="tbl_1">
-                <div id="BBDD_alumne">
-                    <div id="contTabla">
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">DNI</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">1r Apellido</th>
-                                    <th scope="col">2o Apellido</th>
-                                    <th scope="col">Telefono</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Clase</th>
-                                    <th scope="col">Eliminar</th>
-                                    <th scope="col">Modificar</th>
-                                </tr>
-                            </thead>
+                <div id="base_1" class="base">
+                    <div id="BBDD_alumne">
+                        <div id="contTabla">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">DNI</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">1r Apellido</th>
+                                        <th scope="col">2o Apellido</th>
+                                        <th scope="col">Telefono</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Clase</th>
+                                        <th scope="col">Eliminar</th>
+                                        <th scope="col">Modificar</th>
+                                    </tr>
+                                </thead>
 
-                            <tbody>
-                                <?php
-                                    include_once 'conexion.php';
-                                    $sql = "SELECT * FROM tbl_alumne";
-                                    $lista = mysqli_query($con,$sql);
-
-                                    foreach ($lista as $valor => $campo) {
-                                        echo "<tr>";
-                                            echo "<td>{$campo['id_alumne']}</td>";
-                                            echo "<td>{$campo['dni_alu']}</td>";
-                                            echo "<td>{$campo['nom_alu']}</td>";
-                                            echo "<td>{$campo['cognom1_alu']}</td>";
-                                            echo "<td>{$campo['cognom2_alu']}</td>";
-                                            echo "<td>{$campo['telf_alu']}</td>";
-                                            echo "<td>{$campo['email_alu']}</td>";
-                                            echo "<td>{$campo['classe']}</td>";
-                                ?>
-                                            <td><button class="btn btn-success" onClick="window.location.href='./cambios/modificarUsuario.php?id=<?php echo $campo['id']; ?>';" >Modificar</button></td>
-                                            <td><button class="btn btn-danger" onClick="window.location.href='./cambios/borrar.php?id=<?php echo $campo['id']; ?>';" >Borrar</button></td>
-                                        <?php
-                                        echo "</tr>";
-                                    }
-                                        ?>
-                            </tbody>
-                        </table>  
-                    </div> 
-                </div>    
-            </section>
-        </div>
+                                <tbody>
+                                    <?php
+                                        include_once 'conexion.php';
+                                        $sql = "SELECT * FROM tbl_alumne";
+                                        $lista = mysqli_query($con,$sql);
+                                        $contar = mysqli_num_rows($lista);
+                                    ?>
+                                    <script>
+                                        alert("se han devuelto "+ $contar + " valores");
+                                    </script>
+                                        
+                                    <?php
+                                       foreach ($lista as $valor => $campo) {
+                                            echo "<tr>";
+                                                echo "<td>{$campo['id_alumne']}</td>";
+                                                echo "<td>{$campo['dni_alu']}</td>";
+                                                echo "<td>{$campo['nom_alu']}</td>";
+                                                echo "<td>{$campo['cognom1_alu']}</td>";
+                                                echo "<td>{$campo['cognom2_alu']}</td>";
+                                                echo "<td>{$campo['telf_alu']}</td>";
+                                                echo "<td>{$campo['email_alu']}</td>";
+                                                echo "<td>{$campo['classe']}</td>";
+                                    ?>
+                                                <td><button class="btn btn-success" onClick="window.location.href='./cambios/modificarUsuario.php?id=<?php echo $campo['id']; ?>';" >Modificar</button></td>
+                                                <td><button class="btn btn-danger" onClick="window.location.href='./cambios/borrarUsuario.php?id=<?php echo $campo['id']; ?>';" >Borrar</button></td>
+                                            <?php
+                                            echo "</tr>";
+                                        }
+                                            ?>
+                                </tbody>
+                            </table>  
+                        </div> 
+                    </div>    
+                </div>
         
-        <div id="base_2" style="display: none;" class="base">
-            <section id="menuNavegacion">
-                <nav class="navbar fixed-top  navbar-dark bg-dark">
-                    <div class="container-fluid">
-                        <!-- hacemos un fitro utilizando un formulario -->
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                                Filtros
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                <p><input type="text" Placeholder="DNI" name="dni"></p>
-                                <p><input type="nombre" placeholder="Nombre" name="name"></p>
-                                <p><input type="nombre" placeholder="1r Apellido" name="apellido1"></p>
-                                <p><input type="nombre" placeholder="2o Apellido" name="apellido2"></p>
-                                <p><input type="nombre" placeholder="Clase" name="clase"></p>
-                            </ul>
-                        </div>
-                        <a class="navbar-brand" id="tituloMenu">#AppJIYI</a>
-                        <!-- puedes elegir que base de datos mostrar clicando en el nombre -->
-                        <a href="#" id="tabla_1">Alumno</a>
-                        <a href="#" id="tabla_2">Profesor</a>
-                        <!-- crear usario al clica en el botón -->
-                        <a href="./cambios/crearUsuario.html" class="btn btn-primary" role="button" aira-disabled="true">Crear</a>
-                        <!-- descargar fichero csv con el contenido de la base de datos -->
-                        <a href="./CSV/exportarProfesCSV.php"  class="btn btn-secondary" role="button" aria-disabled="true">Exportar CSV</a>
-                    </div>
-                </nav>
-            </section>
+                <div id="base_2" style="display: none;" class="base">
+                    <div id="BBDD_prof">
+                        <div id="contTabla">
+                            <table class="table">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Nombre</th>
+                                        <th scope="col">1r Apellido</th>
+                                        <th scope="col">2o Apellido</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Telefono</th>
+                                        <th scope="col">Departamento</th>
+                                        <th scope="col">Eliminar</th>
+                                        <th scope="col">Modificar</th>
+                                    </tr>
+                                </thead>
 
-            <section id="tbl_2">
-                <div id="BBDD_prof">
-                    <div id="contTabla">
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">1r Apellido</th>
-                                    <th scope="col">2o Apellido</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Telefono</th>
-                                    <th scope="col">Departamento</th>
-                                    <th scope="col">Eliminar</th>
-                                    <th scope="col">Modificar</th>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <?php
-                                    include_once 'conexion.php';
-                                    $sql = "SELECT * FROM tbl_professor";
-                                    $lista = mysqli_query($con,$sql);
-
-                                    foreach ($lista as $valor => $campo) {
-                                        echo "<tr>";
-                                            echo "<td>{$campo['id_professor']}</td>";
-                                            echo "<td>{$campo['nom_prof']}</td>";
-                                            echo "<td>{$campo['cognom1_prof']}</td>";
-                                            echo "<td>{$campo['cognom2_prof']}</td>";
-                                            echo "<td>{$campo['email_prof']}</td>";
-                                            echo "<td>{$campo['telf']}</td>";
-                                            echo "<td>{$campo['dept']}</td>";
-                                ?>
-                                            <td><button class="btn btn-success" onClick="window.location.href='./cambios/modificarUsuario.php?id=<?php echo $campo['id_professor']; ?>';" >Modificar</button></td>
-                                            <td><button class="btn btn-danger" onClick="window.location.href='./cambios/borrarUsuario.php?id=<?php echo $campo['id_professor']; ?>';" >Borrar</button></td>
-                                        <?php
-                                        echo "</tr>";
-                                    }
-                                        ?>
-                            </tbody>
-                        </table>  
-                    </div> 
-                </div>    
-            </section>
-        </div>
+                                <tbody>
+                                    <?php
+                                        include_once 'conexion.php';
+                                        $sql = "SELECT * FROM tbl_professor";
+                                        $lista = mysqli_query($con,$sql);
+                                        $contar = mysqli_num_rows($lista);
+                                    ?>
+                                        <script>
+                                            alert("se han devuelto "+ $contar + " valores");
+                                        </script>
+                                        
+                                    <?php  
+                                        foreach ($lista as $valor => $campo) {
+                                            echo "<tr>";
+                                                echo "<td>{$campo['id_professor']}</td>";
+                                                echo "<td>{$campo['nom_prof']}</td>";
+                                                echo "<td>{$campo['cognom1_prof']}</td>";
+                                                echo "<td>{$campo['cognom2_prof']}</td>";
+                                                echo "<td>{$campo['email_prof']}</td>";
+                                                echo "<td>{$campo['telf']}</td>";
+                                                echo "<td>{$campo['dept']}</td>";
+                                    ?>
+                                                <td><button class="btn btn-success" onClick="window.location.href='./cambios/modificarUsuario.php?id=<?php echo $campo['id_professor']; ?>';" >Modificar</button></td>
+                                                <td><button class="btn btn-danger" onClick="window.location.href='./cambios/borrarUsuario.php?id=<?php echo $campo['id_professor']; ?>';" >Borrar</button></td>
+                                            <?php
+                                            echo "</tr>";
+                                        }
+                                            ?>
+                                </tbody>
+                            </table>  
+                        </div> 
+                    </div>    
+                </div>
     </body>
 </html>
