@@ -1,6 +1,6 @@
 <?php
 require_once '../conexion.php'; 
-$sql = "SELECT * FROM tbl_alumne";
+$sql1 = "SELECT * FROM tbl_alumne";
 $lista = mysqli_query($con,$sql);
 
 header('Content-Type: text/csv; charset=UTF-8');

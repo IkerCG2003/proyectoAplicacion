@@ -10,7 +10,6 @@
     
 <?php
     include '../conexion.php';
-    $id = $_POST['id'];
     $dni = $_POST['dni'];
     $nom = $_POST['nombre'];
     $ape1 = $_POST['apellido1'];
@@ -19,7 +18,7 @@
     $mail = $_POST['email'];
     $clase = $_POST['clase'];
     
-    $sql = "UPDATE `tbl_alumne` SET `dni_alu` = '$dni', `nom_alu` = '$nom' ,`cognom1_alu` = '$ape1', `cognom2_alu` = '$ape2', `telf_alu` = '$telf', `email_alu` = '$mail', `classe` = '$clase' WHERE `tbl_alumne`.`id_alumne` = $id";
+    $sql = "UPDATE `tbl_alumne` SET `dni_alu` = '$dni', `nom_alu` = '$nom' ,`cognom1_alu` = '$ape1', `cognom2_alu` = '$ape2', `telf_alu` = '$telf', `email_alu` = '$mail', `classe` = '$clase' WHERE `tbl_alumne`.`id_alumne` = $nom";
     mysqli_query($con, $sql);
 
     echo $sql;

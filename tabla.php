@@ -22,7 +22,7 @@
     </head>
 
     <body>
-        <!-- MENU DE LA TABLA -->   
+                <!-- MENU DE LA TABLA -->   
                 <section id="menuNavegacion">
                     <nav class="navbar fixed-top  navbar-dark bg-dark">
                         <div class="container-fluid">
@@ -32,11 +32,13 @@
                                     Filtros
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                                    <p><input type="text" Placeholder="DNI" name="dni"></p>
-                                    <p><input type="nombre" placeholder="Nombre" name="name"></p>
-                                    <p><input type="nombre" placeholder="1r Apellido" name="apellido1"></p>
-                                    <p><input type="nombre" placeholder="2o Apellido" name="apellido2"></p>
-                                    <p><input type="nombre" placeholder="Clase" name="clase"></p>
+                                    <form action="proc.filtro.php" method="post">
+                                        <p><input type="text" Placeholder="DNI" name="dni"></p>
+                                        <p><input type="nombre" placeholder="Nombre" name="name"></p>
+                                        <p><input type="nombre" placeholder="1r Apellido" name="apellido1"></p>
+                                        <p><input type="nombre" placeholder="2o Apellido" name="apellido2"></p>
+                                        <p><input type="nombre" placeholder="Clase" name="clase"></p>
+                                    </form>   
                                 </ul>
                             </div>
                             <a class="navbar-brand" id="tituloMenu">#AppJIYI</a>
@@ -46,11 +48,12 @@
                             <!-- crear usario al clica en el botón -->
                             <a href="./cambios/crearUsuario.html" class="btn btn-primary" role="button" aira-disabled="true">Crear</a>
                             <!-- descargar fichero csv con el contenido de la base de datos -->
-                            <a href="./CSV/exportarAlumnoCSV.php"  class="btn btn-secondary" role="button" aria-disabled="true">Exportar CSV</a>
+                            <a href="./CSV/exportarAlumnoCSV.php"  class="btn btn-secondary" role="button" aria-disabled="true" id="botonExportar">Exportar CSV</a>
                         </div>
                     </nav>
                 </section>
 
+                <!-- TABLA DE ALUMNOS -->
                 <div id="base_1" class="base">
                     <div id="BBDD_alumne">
                         <div id="contTabla">
@@ -104,7 +107,8 @@
                         </div> 
                     </div>    
                 </div>
-        
+                
+                <!-- TABLA DE PROFESORES -->
                 <div id="base_2" style="display: none;" class="base">
                     <div id="BBDD_prof">
                         <div id="contTabla">
