@@ -52,9 +52,9 @@
                         <div id="informacion">
                             <div class="form">
                                 <form action="./proc/proc.inicioAlumno.php" method="post">
-                                    <input type="text" placeholder="nombre" name="nombre" class="input nombre">
-                                    <input type="text" placeholder="correo" name="correo" class="input correo">
-                                    <input type="password" placeholder="contraseña" name="contra" class="input correo">
+                                    <input type="text" placeholder="nombre" name="nombre" class="input nombre" required>
+                                    <input type="text" placeholder="correo" name="correo" class="input correo" required>
+                                    <input type="password" placeholder="contraseña" name="contra" class="input correo" required>
                                     <br>
                                     <br>
                                     <div id="boton">

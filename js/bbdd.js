@@ -1,21 +1,20 @@
 /* CAMBIAR BASES DE DATOS */
-function cambioBBDD(q) {
-    var next = q.target.id;
-    next = next.split("_");
-    console.log(next[1]);
+function muestraOculta(e) {
+    var origen = e.target.id;
+    origen = origen.split("_");
+    console.log(origen[1]);
 
-    var bbdd = document.getElementById("base_" + next[1]);
-    for (let a = 1; a < 3 ; a++) {
-        document.getElementById("base_" + a).style.display = "none";
+    var cont = document.getElementById("section_" + origen[1]);
+    for (let i = 1; i < 3 ; i++){
+        document.getElementById("section_" + i).style.display = "none";
     }
 
-    bbdd.style.display = "block";
+    cont.style.display = "block";
+
 }
 
 window.onload = function() {
-    document.getElementById("tabla_1").onclick = cambioBBDD;
-    document.getElementById("tabla_2").onclick = cambioBBDD;
+    document.getElementById("tabla_1").onclick = muestraOculta;
+    document.getElementById("tabla_2").onclick = muestraOculta;
 }
-
-
  

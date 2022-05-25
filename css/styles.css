@@ -17,13 +17,18 @@ p {
 
 a {
     text-decoration: none;
-    color: white;
     text-align: center;
+    color: white;
     font-size: 1.25vw;
 }
 
 /* REGLAS COLUMNAS */
  
+.column-2 {
+    width: 50%;
+    padding-left: 4%;
+}
+
 .column-4 {
     width: 24.5%;
     padding-left: 4%;
@@ -160,14 +165,25 @@ a {
 
 /* ESTILOS BBDD */
 .base {
-    padding-top: 4%;
+    padding-top: 0.50%;
+}
+
+#contSelector {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    height: 8vh;
+    background-image: url(../img/imagenFondo.jpg);
+}
+
+#selector {
+    padding-top: 15px;
 }
 
 @media only screen and (max-width: 600px) {
-    body {
-        height: 110vh;
+    #cuerpoInicio {
+        height: 100vh;
     }
-
     #titulo {
         font-size: 6vw;
     }
@@ -205,4 +221,3 @@ a {
         padding-left: 4%;
     }
 }
- 

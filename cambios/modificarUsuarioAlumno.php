@@ -14,10 +14,11 @@
         $sql = "SELECT * FROM tbl_alumne WHERE id_alumne={$_GET['id']}";
         $result = mysqli_query($con, $sql);
         $conta = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        
     ?>
     
-    <form action="./update.php" method="post">
-        <p><input type="text" placeholder="Nuevo DNI" name="dni"></p>
+    <form action="./updateAlumno.php" method="post">
+        <p><input type="text" placeholder="Nuevo DNI" name="dni" value=></p>
         <p><input type="text" placeholder="Nuevo nombre" name="nombre"></p>
         <p><input type="text" placeholder="Nuevo 1r Apellido" name="apellido1"></p>
         <p><input type="text" placeholder="Nuevo 2o Apellido" name="apellido2"></p>
