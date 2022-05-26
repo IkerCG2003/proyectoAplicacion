@@ -180,6 +180,79 @@ a {
     padding-top: 15px;
 }
 
+#fondoBD {
+    background-image: url(../img/fondoBBDD.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 95vh;
+    width: 100%;
+}
+
+/* PAGINACIÓN */
+
+table {  
+    border-collapse: collapse;  
+}  
+
+.inline{   
+    display: inline-block;   
+    float: right;   
+    margin: 20px 0px;   
+}   
+    
+input, button{   
+    height: 34px;   
+}   
+
+.pagination {   
+    display: inline-block;
+    margin-left: auto; 
+    margin-right: auto ;
+}   
+
+.pagination a {   
+    font-weight:bold;   
+    font-size:18px;   
+    color: black;   
+    float: left;   
+    padding: 8px 16px;   
+    text-decoration: none;   
+    border:1px solid black;   
+}  
+
+.pagination a.active {   
+    background-color: pink;   
+}
+
+.pagination a:hover:not(.active) {   
+    background-color: skyblue;   
+}   
+
+#numeros {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.conTexto {
+    text-align: center; 
+    width: 50% ; 
+    margin-left: auto; 
+    margin-right: auto ;
+}
+
+.texto {
+    text-align: center;
+    font-family: 'Ubuntu Condensed', sans-serif;
+    background-color: gray;
+    border-radius: 5px;
+    font-size: 2vw;
+}
+
+.textoPequeño {
+    font-size: 1vw;
+}
+
 @media only screen and (max-width: 600px) {
     #cuerpoInicio {
         height: 100vh;

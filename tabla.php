@@ -9,6 +9,9 @@
         <!-- GOOGLE FONTS -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Radio+Canada:wght@300&family=Ubuntu+Condensed&display=swap" rel="stylesheet">
         <!-- DROPDOWN -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -21,7 +24,7 @@
         <title>Contenido de la Base de Datos</title>
     </head>
 
-    <body>
+    <body id="fondoBD">
         <!-- BASE DE DATOS / TABLA DE ALUMNOS -->
         <!-- puedes elegir que base de datos mostrar clicando en el nombre -->
         <div id="contSelector">
@@ -84,59 +87,114 @@
             </section>
 
             <div class="base">
-                <div id="BBDD_alumne">
-                    <div id="contTabla">
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">DNI</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">1r Apellido</th>
-                                    <th scope="col">2o Apellido</th>
-                                    <th scope="col">Telefono</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Clase</th>
-                                    <th scope="col">Eliminar</th>
-                                    <th scope="col">Modificar</th>
-                                </tr>
-                            </thead>
+                <?php
+                require_once "conexion.php";
+                $sql = "SELECT * FROM tbl_alumne";
+                $lista = mysqli_query($con,$sql);
+                $contar = mysqli_num_rows($lista);
 
+                $per_page_record = 2;  // Number of entries to show in a page.   
+                // Look for a GET variable page if not found default is 1.        
+                if (isset($_GET["page"])) {    
+                    $page  = $_GET["page"];    
+                }    
+                else {    
+                    $page=1;    
+                }    
 
-                            <tbody>
-                                <?php
-                                include_once 'conexion.php';
-                                $sql = "SELECT * FROM tbl_alumne";
-                                $lista = mysqli_query($con,$sql);
-                                $contar = mysqli_num_rows($lista);
+                $start_from = ($page-1) * $per_page_record;     
 
-                                echo "Se han devuelto $contar valores";
-                                ?>
-
-
-
-                                <?php
-                                foreach ($lista as $valor => $campo) {
-                                echo "<tr>";
-                                echo "<td>{$campo['id_alumne']}</td>";
-                                echo "<td>{$campo['dni_alu']}</td>";
-                                echo "<td>{$campo['nom_alu']}</td>";
-                                echo "<td>{$campo['cognom1_alu']}</td>";
-                                echo "<td>{$campo['cognom2_alu']}</td>";
-                                echo "<td>{$campo['telf_alu']}</td>";
-                                echo "<td>{$campo['email_alu']}</td>";
-                                echo "<td>{$campo['classe']}</td>";
-                                ?>
-                                <td><button class="btn btn-danger" onClick="window.location.href='./cambios/borrarUsuario.php?id=<?php echo $campo['id_alumne']; ?>';" >Borrar</button></td>
-                                <td><button class="btn btn-success" onClick="window.location.href='./cambios/modificarUsuarioAlumno.php?id=<?php echo $campo['id_alumne']; ?>';" >Modificar</button></td>
-                                <?php
-                                echo "</tr>";
-                                }
-                                ?>
-                            </tbody>
-                        </table>  
+                $query = "SELECT * FROM tbl_alumne LIMIT $start_from, $per_page_record";     
+                $rs_result = mysqli_query ($con, $query);    
+                ?>    
+                <div class="container"> 
+                    <div class="conTexto">
+                        <h1 class="texto">Tabla de Alumnos</h1>
+                        <p>
+                            <?php
+                                echo "<p class='textoPequeño'>Se han devuelto $contar valores</p>";
+                            ?> 
+                        </p>
                     </div> 
-                </div>    
+
+                    <table class="table table-striped table-condensed table-bordered">   
+                        <thead>   
+                            <tr>   
+                                <th width="10%">#</th>   
+                                <th>DNI</th>   
+                                <th>Nombre</th>   
+                                <th>1r Apellido</th>
+                                <th>2o Apellido</th>
+                                <th>Contraseña</th>
+                                <th>Telefono</th>   
+                                <th>Email</th>
+                                <th>Clase</th>
+                                <th>Borrar</th>
+                                <th>Modificar</th>
+                            </tr>   
+                        </thead>
+
+                        <tbody>   
+                        <?php     
+                        while ($row = mysqli_fetch_array($rs_result)) {    
+                                // Display each field of the records.    
+                        ?>     
+                        <tr>     
+                            <td><?php echo $row["id_alumne"]; ?></td>     
+                            <td><?php echo $row["dni_alu"]; ?></td>
+                            <td><?php echo $row["nom_alu"]; ?></td>   
+                            <td><?php echo $row["cognom1_alu"]; ?></td>   
+                            <td><?php echo $row["cognom2_alu"]; ?></td>
+                            <td><?php echo $row["contraseña_alu"]; ?></td>
+                            <td><?php echo $row["telf_alu"]; ?></td>                                           
+                            <td><?php echo $row["email_alu"]; ?></td> 
+                            <td><?php echo $row["classe"]; ?></td> 
+                            <td><button class="btn btn-danger" onClick="window.location.href='./cambios/borrarUsuario.php?id=<?php echo $row['id_professor']; ?>';" >Borrar</button></td>
+                            <td><button class="btn btn-success" onClick="window.location.href='./cambios/modificarUsuarioProfesor.php?id=<?php echo $row['id_professor']; ?>';" >Modificar</button></td>
+                        </tr>     
+                    <?php     
+                        };    
+                    ?>     
+                    </tbody> 
+                    </table>   
+                </div>
+
+                <div class="pagination">    
+                    <?php  
+                        $query = "SELECT COUNT(*) FROM tbl_alumne";     
+                        $rs_result = mysqli_query($con, $query);     
+                        $row = mysqli_fetch_row($rs_result);     
+                        $total_records = $row[0];     
+                            
+                        echo "</br>";     
+                        // Number of pages required.   
+                        $total_pages = ceil($total_records / $per_page_record);     
+                        $pagLink = "";            
+                                    
+                        for ($i=1; $i<=$total_pages; $i++) {   
+                            if ($i == $page) {   
+                                $pagLink .= "<a class = 'active' href='tabla.php?page="  
+                                                                .$i."'>".$i." </a>";   
+                            }               
+                            else  {   
+                                $pagLink .= "<a href='tabla.php?page=".$i."'>   
+                                                                ".$i." </a>";     
+                            }   
+                        };  
+
+                        echo $pagLink;   
+ 
+                    ?>    
+                </div>  
+
+                <script>   
+                    function go2Page()   
+                    {   
+                        var page = document.getElementById("page").value;   
+                        page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
+                        window.location.href = 'tabla.php?page='+page;   
+                    }   
+                </script>   
             </div>
         </div>
         
@@ -176,95 +234,114 @@
                 </nav>
             </section>
 
-            <div id="base_2" class="base">
-                <div id="BBDD_prof">
-                    <div id="contTabla">
-                        <table class="table">
-                            <thead class="thead-dark">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Nombre</th>
-                                    <th scope="col">1r Apellido</th>
-                                    <th scope="col">2o Apellido</th>
-                                    <th scope="col">Email</th>
-                                    <th scope="col">Telefono</th>
-                                    <th scope="col">Departamento</th>
-                                    <th scope="col">Eliminar</th>
-                                    <th scope="col">Modificar</th>
-                                </tr>
-                            </thead>
+            
+            <div class="base">
+            <?php   
+                require_once "conexion.php";
+                $sql = "SELECT * FROM tbl_professor";
+                $lista = mysqli_query($con,$sql);
+                $contar2 = mysqli_num_rows($lista);
+                
+                // NUMERO DE RESULTADOS POR PÁGINA
+                $per_page_record = 2; 
 
-                            <tbody>
-                                <?php
-                                    include_once 'conexion.php';
-                                    $sql = "SELECT * FROM tbl_professor";
-                                    $lista = mysqli_query($con,$sql);
-                                    $contar = mysqli_num_rows($lista);
+                if (isset($_GET["page"])) {    
+                    $page  = $_GET["page"];    
+                }    
+                else {    
+                    $page=1;    
+                }    
 
-                                    echo "Se han devuelto $contar valores";
-                                ?>
+                $start_from = ($page-1) * $per_page_record;     
+
+                $query = "SELECT * FROM tbl_professor LIMIT $start_from, $per_page_record";     
+                $rs_result = mysqli_query ($con, $query);    
+                ?>    
+
+                <div class="container">
+
+                    <div class="conTexto">
+                        <h1 class="texto">Tabla de Profesores</h1>
+                        <p>
+                            <?php
+                                echo "<p class='textoPequeño'>Se han devuelto $contar2 valores</p>";
+                            ?> 
+                        </p>
+                    </div>
+                    
+                    <table class="table table-striped table-condensed table-bordered">   
+                                <thead>   
+                                    <tr>   
+                                        <th width="10%">#</th>   
+                                        <th>Nombre</th>   
+                                        <th>1r Apellido</th>   
+                                        <th>2o Apellido</th>
+                                        <th>Email</th>   
+                                        <th>Telefono</th>
+                                        <th>Departamento</th>
+                                        <th>Borrar</th>
+                                        <th>Modificar</th>
+                                    </tr>   
+                                </thead>   
+                                <tbody>   
+                            <?php     
+                                while ($row = mysqli_fetch_array($rs_result)) {    
+                                        // Display each field of the records.    
+                            ?>     
+                                <tr>     
+                                    <td><?php echo $row["id_professor"]; ?></td>     
+                                    <td><?php echo $row["nom_prof"]; ?></td>   
+                                    <td><?php echo $row["cognom1_prof"]; ?></td>   
+                                    <td><?php echo $row["cognom2_prof"]; ?></td> 
+                                    <td><?php echo $row["email_prof"]; ?></td>                                           
+                                    <td><?php echo $row["telf"]; ?></td> 
+                                    <td><?php echo $row["dept"]; ?></td> 
+                                    <td><button class="btn btn-danger" onClick="window.location.href='./cambios/borrarUsuario.php?id=<?php echo $row['id_professor']; ?>';" >Borrar</button></td>
+                                    <td><button class="btn btn-success" onClick="window.location.href='./cambios/modificarUsuarioProfesor.php?id=<?php echo $row['id_professor']; ?>';" >Modificar</button></td>
+                                </tr>     
+                            <?php     
+                                };    
+                            ?>     
+                            </tbody> 
+                    </table>   
+                </div>
+
+                <div class="pagination">    
+                    <?php  
+                        $query = "SELECT COUNT(*) FROM tbl_professor";     
+                        $rs_result = mysqli_query($con, $query);     
+                        $row = mysqli_fetch_row($rs_result);     
+                        $total_records = $row[0];     
+                            
+                        echo "</br>";     
+                        // Number of pages required.   
+                        $total_pages = ceil($total_records / $per_page_record);     
+                        $pagLink = "";            
                                     
-                                    
-                                <?php  
-                                    foreach ($lista as $valor => $campo) {
-                                        echo "<tr>";
-                                            echo "<td>{$campo['id_professor']}</td>";
-                                            echo "<td>{$campo['nom_prof']}</td>";
-                                            echo "<td>{$campo['cognom1_prof']}</td>";
-                                            echo "<td>{$campo['cognom2_prof']}</td>";
-                                            echo "<td>{$campo['email_prof']}</td>";
-                                            echo "<td>{$campo['telf']}</td>";
-                                            echo "<td>{$campo['dept']}</td>";
-                                ?>
-                                            <td><button class="btn btn-danger" onClick="window.location.href='./cambios/borrarUsuario.php?id=<?php echo $campo['id_professor']; ?>';" >Borrar</button></td>
-                                            <td><button class="btn btn-success" onClick="window.location.href='./cambios/modificarUsuarioProfesor.php?id=<?php echo $campo['id_professor']; ?>';" >Modificar</button></td>
-                                        <?php
-                                        echo "</tr>";
-                                    }
-                                        ?>
-                            </tbody>
-                        </table>  
-                    </div> 
-                </div>    
-            </div>
-            <?php for( $i = 0; $i < count( $results->data ); $i++ ) : ?>
-            <tr>
-                <td><?php echo $results->data[$i]['id_profesor']; ?></td>
-                <td><?php echo $results->data[$i]['nom_prof']; ?></td>
-                <td><?php echo $results->data[$i]['cognom1_prof']; ?></td>
-                <td><?php echo $results->data[$i]['cognom2_prof']; ?></td>
-                <td><?php echo $results->data[$i]['email_prof']; ?></td>
-                <td><?php echo $results->data[$i]['telf']; ?></td>
-                <td><?php echo $results->data[$i]['dept']; ?></td>
-            </tr>
-            <?php endfor; ?>
+                        for ($i=1; $i<=$total_pages; $i++) {   
+                            if ($i == $page) {   
+                                $pagLink .= "<a class = 'active' href='tabla.php?page="  
+                                                                .$i."'>".$i." </a>";   
+                            }               
+                            else  {   
+                                $pagLink .= "<a href='tabla.php?page=".$i."'>   
+                                                                ".$i." </a>";     
+                            }   
+                        };  
 
-            <?php
-            require_once 'Paginator.class.php';
-        
-            $conn       = new mysqli( '127.0.0.1', 'root', 'bd_proyecto' );
-        
-            $limit      = ( isset( $_GET['limit'] ) ) ? $_GET['limit'] : 25;
-            $page       = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 1;
-            $links      = ( isset( $_GET['links'] ) ) ? $_GET['links'] : 7;
-            $query      = "SELECT * FROM tbl_professor";
-        
-            $Paginator  = new Paginator( $conn, $query );
-        
-            $results    = $Paginator->getData( $page, $limit );
-            ?>
+                        echo $pagLink;   
 
-            <?php for( $i = 0; $i < count( $results->data ); $i++ ) : ?>
-                    <tr>
-                            <td><?php echo $results->data[$i]['Name']; ?></td>
-                            <td><?php echo $results->data[$i]['Country']; ?></td>
-                            <td><?php echo $results->data[$i]['Continent']; ?></td>
-                            <td><?php echo $results->data[$i]['Region']; ?></td>
-                    </tr>
-            <?php endfor; ?>
+                    ?>    
+                </div>  
 
-            <?php echo $Paginator->createLinks( $links, 'pagination pagination-sm' ); ?> 
+                <script>   
+                    function go2Page()   
+                    {   
+                        var page = document.getElementById("page").value;   
+                        page = ((page><?php echo $total_pages; ?>)?<?php echo $total_pages; ?>:((page<1)?1:page));   
+                        window.location.href = 'tabla.php?page='+page;   
+                    }   
+                </script>
         </div>
-        
     </body>
 </html>
